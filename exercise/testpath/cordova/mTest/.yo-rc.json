@@ -1,0 +1,26 @@
+{
+  "generator-m": {
+    "answers": {
+      "appName": "prova",
+      "appId": "eu.matteotassetti",
+      "bowerPackages": [
+        "angular-translate#~2.4.0",
+        "angular-translate-loader-static-files#~2.4.0",
+        "angular-ui-bootstrap-bower#~0.11.0",
+        "fastclick#~1.0.3",
+        "ratchet#~2.0.2",
+        "restangular#~1.4.0"
+      ],
+      "ionicSass": false,
+      "stableVersions": true,
+      "platforms": [
+        "ios"
+      ],
+      "plugins": [
+        "org.apache.cordova.device"
+      ],
+      "appModule": "prova",
+      "includeSass": true
+    }
+  }
+}

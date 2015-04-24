@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="bosejam15:GrailsWeb exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/bosejam15_GrailsWeb_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="bosejam15/web/GrailsWeb" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="bosejam15" />
+          <element id="module-output" name="bosejam15-grailsPlugins" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="Grails User Library (bosejam15-grailsPlugins)" module-name="bosejam15-grailsPlugins" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
