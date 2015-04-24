@@ -5,6 +5,7 @@ import eu.matteotassetti.javaexample.directory.exceptions.InvalidFileException;
 import eu.matteotassetti.javaexample.directory.exceptions.NotADirException;
 
 import java.io.File;
+import java.util.Collections;
 
 public class RootDirectory extends ConcreteDirectory{
 
@@ -17,15 +18,14 @@ public class RootDirectory extends ConcreteDirectory{
      */
     public RootDirectory(String path) throws InvalidFileException {
         super(new File(path));
-        if (!file.exists()) throw new DirNotFoundException();
-        else if (!file.isDirectory()) throw new NotADirException();
     }
 
     @Override
     public void printDiskUsage(){
+        Collections.sort(childrens);
         for (GenericFile child:childrens)
         {
-            System.out.println(child.getName()+"\t\t"+child.getSize());
+            System.out.println(child.getPrintableString());
         }
     }
 

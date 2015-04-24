@@ -9,22 +9,23 @@ import java.io.File;
  */
 public class ConcreteFile implements GenericFile {
 
-    File file;
     Long size;
+    String name;
 
     public ConcreteFile(File file) throws InvalidFileException
     {
-        this.file=file;
+        this.name=file.getAbsolutePath();
+        if (file.isFile()) this.size=file.length();
     }
 
     @Override
     public Long getSize() {
-        return file.length();
+        return size;
     }
 
     @Override
     public String getName() {
-        return file.getName();
+        return name;
     }
 
     @Override
@@ -32,6 +33,10 @@ public class ConcreteFile implements GenericFile {
         return false;
     }
 
+    @Override
+    public String getPrintableString() {
+        return (isDirectory()?"DIR\t":"FILE")+"\t"+this.getName()+"\t\t("+this.getSize()/1024+" KB)";
+    }
 
     @Override
     public int compareTo(Object o) {

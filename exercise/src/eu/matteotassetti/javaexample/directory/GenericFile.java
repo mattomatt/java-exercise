@@ -7,4 +7,6 @@ public interface GenericFile extends Comparable {
     Long getSize();
     String getName();
     Boolean isDirectory();
+
+    String getPrintableString();
 }

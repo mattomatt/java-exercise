@@ -1,7 +1,11 @@
 package eu.matteotassetti.javaexample.directory;
 
+import eu.matteotassetti.javaexample.directory.exceptions.DirNotFoundException;
 import eu.matteotassetti.javaexample.directory.exceptions.InvalidFileException;
+import eu.matteotassetti.javaexample.directory.exceptions.NotADirException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -10,11 +14,13 @@ import java.util.TreeSet;
  */
 public class ConcreteDirectory extends ConcreteFile {
 
-    SortedSet<GenericFile> childrens;
+    List<GenericFile> childrens;
 
     public ConcreteDirectory(java.io.File file) throws InvalidFileException {
         super(file);
-        childrens=new TreeSet<GenericFile>();
+        if (!file.exists()) throw new DirNotFoundException();
+        else if (!file.isDirectory()) throw new NotADirException();
+        childrens=new ArrayList<GenericFile>();
         java.io.File[] files=file.listFiles();
         for (java.io.File childFile:files)
         {
@@ -25,12 +31,14 @@ public class ConcreteDirectory extends ConcreteFile {
 
     @Override
     public Long getSize() {
-        Long len=0l;
-        for (GenericFile child:childrens)
-        {
-            len=len+child.getSize();
+        if (size==null) {
+            Long len = 0l;
+            for (GenericFile child : childrens) {
+                len = len + child.getSize();
+            }
+            size=len;
         }
-        return len;
+        return size;
     }
 
     @Override
@@ -45,10 +53,6 @@ public class ConcreteDirectory extends ConcreteFile {
             {
                 System.out.println(child.getName()+"\t\t"+child.getSize());
             }
-
         }
     }
-
-
-
 }
